@@ -1,2 +1,3 @@
 # 09-28_3D-triangles
-This example moves us into 3D
+
+On to 3D! Playing with a collection of triangles. 
