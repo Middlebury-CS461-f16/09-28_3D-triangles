@@ -105,8 +105,9 @@ window.onload = function(){
   let u_Transform = gl.getUniformLocation(program, 'u_Transform');
   gl.uniformMatrix4fv(u_Transform, false, transform);
 
+  gl.enable(gl.DEPTH_TEST)
   // clear the canvas
-  gl.clear(gl.COLOR_BUFFER_BIT );
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
   // draw the triangles
   gl.drawArrays(gl.TRIANGLES, 0, n);
