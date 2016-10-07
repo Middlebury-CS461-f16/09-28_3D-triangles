@@ -102,6 +102,17 @@ window.onload = function(){
 
   let transform = mat4.create();
 
+
+  //mat4.translate(transform, transform, [0, 0, -0.2]);
+  //mat4.rotateX(transform, transform, Math.PI/4);
+  //mat4.rotateY(transform, transform, -Math.PI/4);
+
+  let eye = vec3.fromValues(.1, .14, 0.1);
+  let up = vec3.fromValues(0,1,0);
+  let at = vec3.fromValues(0,0,0);
+
+  mat4.lookAt(transform, eye, at, up);
+
   let u_Transform = gl.getUniformLocation(program, 'u_Transform');
   gl.uniformMatrix4fv(u_Transform, false, transform);
 
