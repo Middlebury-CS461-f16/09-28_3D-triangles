@@ -3,12 +3,13 @@ attribute vec4 a_Position;
 attribute vec4 a_Color;
 
 uniform mat4 u_Transform;
+uniform mat4 u_Projection;
 
 varying vec4 v_Color;
 
 void main(){
   v_Color = a_Color;
-  gl_Position = u_Transform * a_Position;
+  gl_Position = u_Projection * u_Transform * a_Position;
 }`;
 
 var fragmentShader = `
@@ -107,7 +108,7 @@ window.onload = function(){
   //mat4.rotateX(transform, transform, Math.PI/4);
   //mat4.rotateY(transform, transform, -Math.PI/4);
 
-  let eye = vec3.fromValues(.1, .14, 0.1);
+  let eye = vec3.fromValues(.5, .5, 0.5);
   let up = vec3.fromValues(0,1,0);
   let at = vec3.fromValues(0,0,0);
 
@@ -115,6 +116,12 @@ window.onload = function(){
 
   let u_Transform = gl.getUniformLocation(program, 'u_Transform');
   gl.uniformMatrix4fv(u_Transform, false, transform);
+
+  let projection = mat4.create();
+  mat4.ortho(projection, -1, 1, -1, 1, 0.1, 5);
+  let u_Projection = gl.getUniformLocation(program, 'u_Projection');
+  gl.uniformMatrix4fv(u_Projection, false, projection);
+
 
   gl.enable(gl.DEPTH_TEST)
   // clear the canvas
