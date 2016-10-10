@@ -108,7 +108,7 @@ window.onload = function(){
   //mat4.rotateX(transform, transform, Math.PI/4);
   //mat4.rotateY(transform, transform, -Math.PI/4);
 
-  let eye = vec3.fromValues(.5, .5, 0.5);
+  let eye = vec3.fromValues(.6, .3, 0.5);
   let up = vec3.fromValues(0,1,0);
   let at = vec3.fromValues(0,0,0);
 
