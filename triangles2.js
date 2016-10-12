@@ -150,9 +150,9 @@ window.onload = function(){
   //mat4.rotateX(transform, transform, Math.PI/4);
   //mat4.rotateY(transform, transform, -Math.PI/4);
 
-  let eye = vec3.fromValues(.6, .3, 0.5);
+  let eye = vec3.fromValues(-1.5, .75, 2.5);
   let up = vec3.fromValues(0,1,0);
-  let at = vec3.fromValues(0,0,0);
+  let at = vec3.fromValues(0, 0, -1);
 
   mat4.lookAt(transform, eye, at, up);
 
@@ -160,7 +160,7 @@ window.onload = function(){
   gl.uniformMatrix4fv(u_Transform, false, transform);
 
   let projection = mat4.create();
-  mat4.ortho(projection, -1, 1, -1, 1, 0.1, 5);
+  mat4.perspective(projection, Math.PI/3,1, 0.1,10);
   let u_Projection = gl.getUniformLocation(program, 'u_Projection');
   gl.uniformMatrix4fv(u_Projection, false, projection);
 
